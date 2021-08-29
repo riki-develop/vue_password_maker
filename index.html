@@ -58,7 +58,7 @@
                 <div class="d-flex mb-5">
                 <label for="length" class="col-form-label">文字数</label>
                     <div class="ms-3">
-                        <input type="number" id="length" class="form-control">
+                        <input type="number" id="length" class="form-control" v-model="length">
                     </div>
                 </div>
 
@@ -76,8 +76,8 @@
                     big_alpha: true,
                     small_alpha: true,
                     numbers: true,
-                    symbols: true
-
+                    symbols: true,
+                    length: 10
                 }
             },
             computed: {
@@ -94,10 +94,12 @@
                     source += (this.small_alpha ? small_alpha_string : '')
                     source += (this.numbers ? numbers_string : '')
                     source += (this.symbols ? symbols_string : '')
+                    if (source === '') return 'チェックを入れて下さい'
 
+                    // 初期値宣言
                     let ret = ''
 
-                    for (let i=0; i<10; i++) {
+                    for (let i=0; i<this.length; i++) {
                         let rand = Math.floor(Math.random() * source.length)
                         ret += source.substr(rand, 1)
                     }
@@ -105,7 +107,6 @@
                 }
             }
         }
-
         Vue.createApp(myApp).mount('#app')
     </script>
 </body>
