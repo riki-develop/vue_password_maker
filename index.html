@@ -79,10 +79,12 @@
                 password() {
                     const big_alpha_string = 'ABCDEFGHJKLMNPQRSTUVWXYZ'
                     let source = big_alpha_string
-                    let rand = Math.floor(Math.random() * source.length)
-                    // console.log(rand)
-
-                    return source.substr(6, 1)
+                    let ret = ''
+                    for (let i=0; i<10; i++) {
+                        let rand = Math.floor(Math.random() * source.length)
+                        ret += source.substr(rand, 1)
+                    }
+                    return ret
                 }
             }
         }
