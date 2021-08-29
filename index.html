@@ -27,25 +27,25 @@
                         <div class="row mb-5">
                             <div class="col-12">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="big-alpha">
+                                    <input class="form-check-input" type="checkbox" id="big-alpha" v-model="big_alpha">
                                     <label class="form-check-label" for="big-alpha">英大文字</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="small-alpha">
+                                    <input class="form-check-input" type="checkbox" id="small-alpha" v-model="small_alpha">
                                     <label class="form-check-label" for="small-alpha">英子文字</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="numbers">
+                                    <input class="form-check-input" type="checkbox" id="numbers" v-model="numbers">
                                     <label class="form-check-label" for="numbers">数字</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="symbols">
+                                    <input class="form-check-input" type="checkbox" id="symbols" v-model="symbols">
                                     <label class="form-check-label" for="symbols">記号</label>
                                 </div>
                             </div>
@@ -72,14 +72,31 @@
         const myApp = {
             data() {
                 return {
+                    // fomr ディリクティブ 紐付け
+                    big_alpha: true,
+                    small_alpha: true,
+                    numbers: true,
+                    symbols: true
 
                 }
             },
             computed: {
                 password() {
+                    // 定数定義
                     const big_alpha_string = 'ABCDEFGHJKLMNPQRSTUVWXYZ'
-                    let source = big_alpha_string
+                    const small_alpha_string = 'abcdefghjklmnopqrstuvwzxy'
+                    const numbers_string = '23456789'
+                    const symbols_string = '!@#$%^&*()'
+
+                    // v-model紐付け
+                    let source = ''
+                    source += (this.big_alpha ? big_alpha_string : '')
+                    source += (this.small_alpha ? small_alpha_string : '')
+                    source += (this.numbers ? numbers_string : '')
+                    source += (this.symbols ? symbols_string : '')
+
                     let ret = ''
+
                     for (let i=0; i<10; i++) {
                         let rand = Math.floor(Math.random() * source.length)
                         ret += source.substr(rand, 1)
