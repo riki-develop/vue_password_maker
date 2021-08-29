@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body class="bg-light">
-    <div class="container">
+    <div class="container" id="app">
         <div class="row">
             <div class="col-12 offset-6 bg-white pt-5">
 
                 <h1 class="text-center mb-5">パスワードメーカー</h1>
 
                 <!-- パスワード出力部分 -->
-                <input type="text" class="form-control form-control-lg text-center mb-5">
+                <input type="text" class="form-control form-control-lg text-center mb-5" :value="password">
 
 
                 <!-- スウィッチボックス -->
@@ -55,7 +55,7 @@
                 </div><!-- row -->
 
                 <!-- ナンバーカウンター -->
-                <div class="d-flex">
+                <div class="d-flex mb-5">
                 <label for="length" class="col-form-label">文字数</label>
                     <div class="ms-3">
                         <input type="number" id="length" class="form-control">
@@ -65,5 +65,24 @@
             </div><!-- col-12 offset-6 -->
         </div><!-- row -->
     </div> <!-- container -->
+
+    <!-- Vue CDN読み込み -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const myApp = {
+            data() {
+                return {
+
+                }
+            },
+            computed: {
+                password() {
+                    return '1a1a1a'
+                }
+            }
+        }
+
+        Vue.createApp(myApp).mount('#app')
+    </script>
 </body>
 </html>
