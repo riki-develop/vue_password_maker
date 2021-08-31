@@ -3687,8 +3687,10 @@ textarea.form-control-lg {
 
 .btn-info {
   color: #000;
+  border-radius: 4px;
   background-color: #0dcaf0;
   border-color: #0dcaf0;
+  padding: 4px;
 }
 .btn-info:hover {
   color: #000;

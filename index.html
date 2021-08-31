@@ -6,21 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/common.js"></script>
 </head>
-<body class="bg-light">
+<body class="bg-light mt-5">
     <div class="container" id="app">
         <div class="row">
-            <div class="col-12 offset-6 bg-white pt-5">
+            <div id="outer-wrap" class="col-12 offset-6 bg-white pt-5">
 
                 <h1 class="text-center mb-5">パスワードメーカー</h1>
 
                 <!-- パスワード出力部分 -->
-                <input type="text" class="form-control form-control-lg text-center mb-5" :value="password" readonly>
-
+                <div class="text-end">
+                    <input id="copyText" type="text" class="form-control form-control-lg text-center mb-3" :value="password" readonly>
+                    <button class="btn-info mb-5">Copy text</button>
+                </div>
 
                 <!-- スウィッチボックス -->
                 <div class="row">
-                    <div class="col-18 offset-3">
+                    <div id="inner-wrap" class="col-18 offset-3">
 
                         <h2>カスタマイズ</h2>
 
@@ -55,10 +58,11 @@
                 </div><!-- row -->
 
                 <!-- ナンバーカウンター -->
-                <div class="d-flex mb-5">
+                <div class="d-flex mb-3">
                 <label for="length" class="col-form-label">文字数</label>
-                    <div class="ms-3">
-                        <input type="number" id="length" class="form-control" v-model="length">
+                    <div class="ms-3 w-75">
+                        <input type="number" id="length" max="20" min="4" class="form-control" v-model="length">
+                        <small class="small mb-5">4文字以上〜20文字位内で指定</small>
                     </div>
                 </div>
 
