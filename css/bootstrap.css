@@ -609,6 +609,7 @@ progress {
 .container-md,
 .container-sm {
   width: 100%;
+  max-width: 1100px !important;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
@@ -3686,7 +3687,8 @@ textarea.form-control-lg {
 }
 
 .btn-info {
-  color: #000;
+  color: #fff;
+  font-weight: bold;
   border-radius: 4px;
   background-color: #0dcaf0;
   border-color: #0dcaf0;
@@ -8404,8 +8406,9 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  /* --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important; */
+  background-color: #ebecf0;
 }
 
 .bg-dark {
@@ -8455,6 +8458,11 @@ textarea.form-control-lg {
 
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
+}
+
+.b-shadow {
+  border-radius: 6px;
+  box-shadow: 2px 2px 4px #e0e0e0;
 }
 
 .user-select-all {

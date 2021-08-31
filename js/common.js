@@ -1,7 +1,7 @@
 window.onload = () => {
     // デバイス別でclass差替
     if (window.innerWidth <= 620) {
-        document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white pt-5"
+        document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white b-shadow pt-5"
         document.getElementById('inner-wrap').classList.value = "col-20 offset-2"
     }
 
