@@ -3695,9 +3695,8 @@ textarea.form-control-lg {
   padding: 4px;
 }
 .btn-info:hover {
-  color: #000;
-  background-color: #31d2f2;
-  border-color: #25cff2;
+  background-color: #1494ad;
+  border-color: #1494ad;
 }
 .btn-check:focus + .btn-info, .btn-info:focus {
   color: #000;
@@ -4439,6 +4438,14 @@ textarea.form-control-lg {
 }
 .btn-toolbar .input-group {
   width: auto;
+}
+.count-box button {
+  border-radius: 5px;
+  margin-right: 5px;
+  padding: 0 10px;
+}
+.count-box button:last-child {
+  margin: 0;
 }
 
 .btn-group > .btn:not(:first-child),
@@ -8163,6 +8170,10 @@ textarea.form-control-lg {
 
 .font-monospace {
   font-family: var(--bs-font-monospace) !important;
+}
+
+.fs-11 {
+  font-size: 1.2rem !important;
 }
 
 .fs-1 {
