@@ -62,7 +62,7 @@
                 <label for="length" class="col-form-label">文字数</label>
                     <div class="ms-3 w-75">
                         <input type="number" id="length" max="20" min="4" class="form-control mb-3" v-model="length" readonly>
-                        <!-- <small class="small mb-5">4文字以上〜20文字位内で指定</small> -->
+                        <small class="small mb-5">4文字以上〜20文字位内</small>
                         <div class="count-box text-end">
                             <button @click="decrement" v-if="length !== 4">-1</button>
                             <button v-else="length === 4">-1</button>
