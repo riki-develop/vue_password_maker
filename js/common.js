@@ -14,4 +14,7 @@ window.onload = () => {
 
         alert("コピーしました！ : " + copyText.value)
     })
+
+    // iPhoneダブルタップ防止
+    document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
 }
