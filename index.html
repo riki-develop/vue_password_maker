@@ -18,7 +18,7 @@
                 <!-- パスワード出力部分 -->
                 <div id="textarea" class="text-end w-75 m-auto">
                     <input id="copyText" type="text" class="form-control form-control-lg text-center fs-11 mb-3" :value="password" readonly>
-                    <button class="btn-info mb-4">コピーする</button>
+                    <button class="btn-primary rounded-1 mb-4">コピーする</button>
                 </div>
 
                 <!-- スウィッチボックス -->
@@ -62,12 +62,12 @@
                 <label for="length" class="col-form-label">文字数</label>
                     <div class="ms-3 w-75">
                         <input type="number" id="length" max="20" min="4" class="form-control" v-model="length" readonly>
-                        <small class="small mb-5">4文字以上〜20文字位内</small>
+                        <small class="list-group-item-warning small mb-5">4文字〜20文字で指定</small>
                         <div class="count-box text-end">
                             <button @click="decrement" v-if="length !== 4">-1</button>
-                            <button v-else="length === 4">-1</button>
+                            <button class="btn-not-active" v-else="length === 4">-1</button>
                             <button @click="increment" v-if="length !== 20">+1</button>
-                            <button v-else="length === 20">+1</button>
+                            <button class="btn-not-active" v-else="length === 20">+1</button>
                         </div>
                     </div>
                 </div>
