@@ -28,7 +28,7 @@ window.onload = () => {
     // localStorage.removeItem('6')
 
     document.querySelector('#keep-btn').addEventListener('click', () => {
-        if (localStorage.length < 5) {
+        if (keepLeng < 5) {
             keepLeng++;
             copyText.select()
 
@@ -42,7 +42,7 @@ window.onload = () => {
 
     // リロードしたらストレージをレングス分回して出力
     if (performance.navigation.type === 1) {
-        for(let i = 1; i <= localStorage.length; i++) {
+        for(let i = 1; i <= keepLeng; i++) {
             let getPassReload = localStorage.getItem(i)
             keepId.insertAdjacentHTML('beforeend', '<div class="keep-password">'+getPassReload+'</div>');
         }
