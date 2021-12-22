@@ -21,7 +21,8 @@
                 <!-- パスワード出力部分 -->
                 <div id="textarea" class="text-end w-75 m-auto">
                     <input id="copyText" type="text" class="form-control form-control-lg text-center fs-11 mb-3" :value="password" readonly>
-                    <button class="btn-primary rounded-1 mb-4">コピーする</button>
+                    <button id="keep-btn" class="btn-secondary rounded-1 mb-4 me-2">一時保存</button>
+                    <button id="copy-btn" class="btn-primary rounded-1 mb-4">コピーする</button>
                 </div>
 
                 <!-- スウィッチボックス -->
@@ -75,6 +76,9 @@
                     </div>
                 </div>
 
+                <div id="keep-data">
+
+                </div>
             </div><!-- col-12 offset-6 -->
         </div><!-- row -->
     </div> <!-- container -->
