@@ -1,13 +1,20 @@
 window.onload = () => {
-    // デバイス別でclass差替
+    //////////////////////////////
+    //・デバイス毎にスタイル切り分け
+    //////////////////////////////
     if (window.innerWidth <= 620) {
         document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white b-shadow pt-5"
         document.getElementById('textarea').classList.value = "text-end m-auto"
         document.getElementById('inner-wrap').classList.value = "col-20 offset-2"
     }
 
-    // パスワード生成要素
+    //////////////////////////////
+    //・クリックイベント
+    //・リロード制御
+    //////////////////////////////
     const copyText = document.getElementById("copyText")
+    let keepId = document.getElementById('keep-data')
+    let keepLeng = localStorage.length;
 
     // コピーイベント
     document.querySelector('#copy-btn').addEventListener('click', () => {
@@ -17,16 +24,7 @@ window.onload = () => {
         alert("コピーしました！ : " + copyText.value)
     })
 
-    // キープイベント
-    let keepLeng = localStorage.length;
-    let keepId = document.getElementById('keep-data')
-    // localStorage.removeItem('1')
-    // localStorage.removeItem('2')
-    // localStorage.removeItem('3')
-    // localStorage.removeItem('4')
-    // localStorage.removeItem('5')
-    // localStorage.removeItem('6')
-
+    // 一時保存
     document.querySelector('#keep-btn').addEventListener('click', () => {
         if (keepLeng < 5) {
             keepLeng++;
@@ -34,20 +32,31 @@ window.onload = () => {
 
             localStorage.setItem(keepLeng, copyText.value)
             let getPassOnClick = localStorage.getItem(keepLeng)
-            keepId.insertAdjacentHTML('beforeend', '<div class="keep-password">'+getPassOnClick+'</div>');
+            keepId.insertAdjacentHTML('beforeend', '<li class="keep-pass">'+getPassOnClick+'</li>');
         }else{
             alert('5つ以上は保存できません')
         }
+    })
+
+    // 一括削除
+    document.querySelector('#delete-btn').addEventListener('click', () => {
+        while(keepId.lastChild) {
+            keepId.removeChild(keepId.lastChild);
+        }
+
+        localStorage.clear()
     })
 
     // リロードしたらストレージをレングス分回して出力
     if (performance.navigation.type === 1) {
         for(let i = 1; i <= keepLeng; i++) {
             let getPassReload = localStorage.getItem(i)
-            keepId.insertAdjacentHTML('beforeend', '<div class="keep-password">'+getPassReload+'</div>');
+            keepId.insertAdjacentHTML('beforeend', '<li class="keep-pass">'+getPassReload+'</li>');
         }
     }
 
-    // iPhoneダブルタップ防止
+    //////////////////////////////
+    //・スマホ_ダブルタップ防止
+    //////////////////////////////
     document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false })
 }
