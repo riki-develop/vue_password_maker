@@ -12,7 +12,7 @@ window.onload = () => {
     //・クリックイベント
     //・リロード制御
     //////////////////////////////
-    const copyText = document.getElementById("copyText")
+    const copyText = document.getElementById("copy-text")
     let keepId = document.getElementById('keep-data')
     let keepLeng = localStorage.length;
 
@@ -24,18 +24,69 @@ window.onload = () => {
         alert("コピーしました！ : " + copyText.value)
     })
 
+    // 一時保存・リロードの度にlengthを代入
+    const reSelect = () => {
+        btns = document.querySelectorAll('.js-copy-btn')
+        console.log(btns)
+    }
+
     // 一時保存
     document.querySelector('#keep-btn').addEventListener('click', () => {
         if (keepLeng < 5) {
             keepLeng++;
-            copyText.select()
-
             localStorage.setItem(keepLeng, copyText.value)
+
             let getPassOnClick = localStorage.getItem(keepLeng)
-            keepId.insertAdjacentHTML('beforeend', '<li class="keep-pass">'+getPassOnClick+'</li>');
+            keepId.insertAdjacentHTML(
+                'beforeend',
+                '<li>' +
+                `<input class="js-copy-pass" type="text" value="${getPassOnClick}" readonly>` +
+                '<button class="js-copy-btn">コピーする</button>' +
+                '</li>'
+            )
+            reSelect()
         }else{
             alert('5つ以上は保存できません')
         }
+    })
+
+    // リロードしたらストレージをレングス分回して出力
+    if (performance.navigation.type === 1) {
+        for(let i = 1; i <= keepLeng; i++) {
+            let getPassReload = localStorage.getItem(i)
+            keepId.insertAdjacentHTML(
+                'beforeend',
+                '<li>' +
+                `<input class="js-copy-pass" type="text" value="${getPassReload}" readonly>` +
+                '<button class="js-copy-btn">コピーする</button>' +
+                '</li>'
+            )
+            reSelect()
+        }
+    }
+
+    // 一時保存したパスワードのコピー機能
+
+    // for(let i = 0; i < btns.length; i++) {
+    //     btns[i].addEventListener('click', function() {
+    //         let preTarget = this.previousElementSibling
+
+    //         preTarget.select()
+    //         document.execCommand("Copy")
+
+    //         alert("コピーしました！ : " + preTarget.value)
+    //     },false)
+    // }
+
+    btns.forEach((target) => {
+        target.addEventListener('click', () => {
+            let preTarget = target.previousElementSibling
+
+            preTarget.select()
+            document.execCommand("Copy")
+
+            alert("コピーしました！ : " + preTarget.value)
+        })
     })
 
     // 一括削除
@@ -45,15 +96,8 @@ window.onload = () => {
         }
 
         localStorage.clear()
+        keepLeng = 0
     })
-
-    // リロードしたらストレージをレングス分回して出力
-    if (performance.navigation.type === 1) {
-        for(let i = 1; i <= keepLeng; i++) {
-            let getPassReload = localStorage.getItem(i)
-            keepId.insertAdjacentHTML('beforeend', '<li class="keep-pass">'+getPassReload+'</li>');
-        }
-    }
 
     //////////////////////////////
     //・スマホ_ダブルタップ防止
