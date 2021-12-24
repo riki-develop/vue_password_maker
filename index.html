@@ -8,21 +8,22 @@
     <link rel="shortcut icon" type="img/x-icon" href="img/icon.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" type="image/x-icon" href="img/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/common.js"></script>
 </head>
 <body class="bg-light mt-5">
     <div class="container" id="app">
         <div class="row">
-            <div id="outer-wrap" class="col-12 offset-6 bg-white b-shadow pt-5">
+            <div id="outer-wrap" class="col-12 offset-6 bg-white b-shadow mb-5 pt-5">
 
                 <h1 class="text-center mb-5"><img src="img/password-maker.png" alt="パスワードメイカー" class="col-18"></h1>
 
                 <!-- パスワード出力部分 -->
                 <div id="textarea" class="text-end w-75 m-auto">
                     <input id="copy-text" type="text" class="form-control form-control-lg text-center fs-11 mb-3" :value="password" readonly>
-                    <!-- <button id="keep-btn" class="btn-secondary rounded-1 mb-4 me-2">一時保存</button> -->
-                    <button id="copy-btn" class="btn-primary rounded-1 mb-4">コピーする</button>
+                    <button id="keep-btn" class="btn-secondary rounded-1 mb-4 me-2 px-2 py-1">一時保存</button>
+                    <button id="copy-btn" class="btn-primary rounded-1 mb-4 px-2 py-1">コピーする</button>
                 </div>
 
                 <!-- スウィッチボックス -->
@@ -62,23 +63,24 @@
                 </div><!-- row -->
 
                 <!-- ナンバーカウンター -->
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-5">
                 <label for="length" class="col-form-label">文字数</label>
                     <div class="ms-3 w-75">
                         <input type="number" id="length" max="20" min="4" class="form-control" v-model="length" readonly>
                         <small class="list-group-item-warning small mb-5">4文字〜20文字で指定</small>
                         <div class="count-box text-end">
-                            <button @click="decrement" v-if="length !== 4">-1</button>
+                            <button class="btn btn-outline-primary" @click="decrement" v-if="length !== 4">-1</button>
                             <button class="btn-not-active" v-else="length === 4">-1</button>
-                            <button @click="increment" v-if="length !== 20">+1</button>
+                            <button class="btn btn-outline-primary" @click="increment" v-if="length !== 20">+1</button>
                             <button class="btn-not-active" v-else="length === 20">+1</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="keep-data-wrap">
-                    <ul id="keep-data"></ul>
-                    <!-- <button id="delete-btn" class="btn-secondary rounded-1 mb-4">一括削除</button> -->
+                <div id="keep-data-wrap" class="text-end w-75 m-auto">
+                    <!-- <h2 class="text-left">一時保存したパスワード</h2> -->
+                    <ul id="keep-data" class="px-0"></ul>
+                    <button id="delete-btn" class="btn-secondary rounded-1 mb-4 px-2 py-1">一括削除</button>
                 </div>
             </div><!-- col-12 offset-6 -->
         </div><!-- row -->
