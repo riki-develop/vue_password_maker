@@ -11,6 +11,7 @@ window.onload = () => {
         document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white b-shadow pt-5"
         document.getElementById('textarea').classList.value = "text-end m-auto"
         document.getElementById('inner-wrap').classList.value = "col-20 offset-2"
+        document.getElementById('keep-data-wrap').classList.value = "text-end m-auto"
     }
 
     //////////////////////////////
@@ -38,7 +39,7 @@ window.onload = () => {
     // 一時保存
     document.querySelector('#keep-btn').addEventListener('click', () => {
         if (keepLeng < 5) {
-            keepLeng++;
+            keepLeng++
             localStorage.setItem(keepLeng, copyText.value)
 
             let getPassOnClick = localStorage.getItem(keepLeng)
@@ -49,6 +50,9 @@ window.onload = () => {
                 '<button class="js-copy-btn btn-primary rounded-1 mb-4 px-2 py-1">コピーする</button>' +
                 '</li>'
             )
+            // document.getElementById('keep-data-wrap').style.display = 'block'
+            // btns = document.querySelectorAll('.js-copy-btn')
+            // console.log(btns)
             window.location.reload(false)
         }else{
             alert('5つ以上は保存できません')
@@ -68,6 +72,13 @@ window.onload = () => {
             )
         }
     // }
+
+    // 子要素存在判定
+    const keepElem = document.getElementById('keep-data');
+
+    if (keepElem.hasChildNodes()) {
+        document.getElementById('keep-data-wrap').style.display = 'block'
+    }
 
     // 一時保存したパスワード_クリックイベント
     let btns = document.querySelectorAll('.js-copy-btn')
@@ -89,6 +100,7 @@ window.onload = () => {
             keepId.removeChild(keepId.lastChild);
         }
 
+        document.getElementById('keep-data-wrap').style.display = 'none'
         localStorage.clear()
         keepLeng = 0
     })
