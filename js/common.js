@@ -16,7 +16,7 @@ $(window).on('load',function () {
 
 //5秒たったら強制的にロード画面を非表示
 $(function() {
-    setTimeout('stopload()',600);
+    setTimeout('stopload()',400);
 });
 
 function stopload() {
