@@ -1,3 +1,30 @@
+//////////////////////////////
+//・ローディング
+//////////////////////////////
+$(function() {
+    var h = $(window).height();
+
+    $('#wrap').css('display','none');
+    $('#loading ,#spinner').height(h).css('display','block');
+});
+
+$(window).on('load',function () {
+    $('#wrap').css('display', 'block');
+    $('#loading').delay(500).fadeOut(500);
+    $('#spinner').delay(300).fadeOut(300);
+});
+
+//5秒たったら強制的にロード画面を非表示
+$(function() {
+    setTimeout('stopload()',800);
+});
+
+function stopload() {
+    $('#wrap').css('display','block');
+    $('#loading').delay(500).fadeOut(500);
+    $('#spinner').delay(300).fadeOut(300);
+}
+
 window.onload = () => {
     //////////////////////////////
     //・スマホ_ダブルタップ防止
@@ -8,7 +35,7 @@ window.onload = () => {
     //・デバイス毎にスタイル切り分け
     //////////////////////////////
     if (window.innerWidth <= 620) {
-        document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white b-shadow pt-5"
+        document.getElementById('outer-wrap').classList.value = "col-20 offset-2 bg-white b-shadow pt-5 mb-5"
         document.getElementById('textarea').classList.value = "text-end m-auto"
         document.getElementById('inner-wrap').classList.value = "col-20 offset-2"
         document.getElementById('keep-data-wrap').classList.value = "text-end m-auto"
@@ -83,9 +110,9 @@ window.onload = () => {
     // 一時保存したパスワード_クリックイベント
     let btns = document.querySelectorAll('.js-copy-btn')
 
-    btns.forEach((target) => {
-        target.addEventListener('click', () => {
-            let preTarget = target.previousElementSibling
+    btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            let preTarget = btn.previousElementSibling
 
             preTarget.select()
             document.execCommand("Copy")

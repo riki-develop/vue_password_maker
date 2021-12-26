@@ -11866,4 +11866,26 @@ textarea.form-control-lg {
   }
 }
 
+/* ローディングイベント */
+#loading {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: #fff;
+  z-index: 1;
+}
+#spinner {
+  display: none;
+  color: #fff;
+  z-index: 2;
+}
+
+#wrap{
+  background: #fff;
+  width: 100%;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */
