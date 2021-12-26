@@ -80,6 +80,7 @@ window.onload = () => {
             // document.getElementById('keep-data-wrap').style.display = 'block'
             // btns = document.querySelectorAll('.js-copy-btn')
             // console.log(btns)
+            document.getElementById('keep-data-wrap').style.display = 'none'
             window.location.reload(false)
         }else{
             alert('5つ以上は保存できません')
