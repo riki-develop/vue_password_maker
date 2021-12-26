@@ -2,14 +2,13 @@
 //・ローディング
 //////////////////////////////
 $(function() {
-    var h = $(window).height();
+    let h = $(window).height();
 
-    $('#app').css('display','none');
     $('#loading ,#spinner').height(h).css('display','block');
 });
 
 $(window).on('load',function () {
-    $('#app').css('display', 'block');
+    $('#body').css('display', 'block');
     $('#loading').delay(500).fadeOut(500);
     $('#spinner').delay(300).fadeOut(300);
 });
@@ -20,7 +19,7 @@ $(function() {
 });
 
 function stopload() {
-    $('#app').css('display','block');
+    $('#body').css('display','block');
     $('#loading').delay(500).fadeOut(500);
     $('#spinner').delay(300).fadeOut(300);
 }
@@ -80,7 +79,7 @@ window.onload = () => {
             // document.getElementById('keep-data-wrap').style.display = 'block'
             // btns = document.querySelectorAll('.js-copy-btn')
             // console.log(btns)
-            document.getElementById('app').style.display = 'none'
+            document.getElementById('body').style.display = 'none'
             window.location.reload(false)
         }else{
             alert('5つ以上は保存できません')
