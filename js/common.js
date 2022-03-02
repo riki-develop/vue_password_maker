@@ -9,7 +9,7 @@ $(function() {
 
 $(window).on('load',function () {
     $('#body').css('display', 'block');
-    $('#loading').delay(500).fadeOut(500);
+    $('#loading').delay(420).fadeOut(420);
     $('#spinner').delay(300).fadeOut(300);
 });
 
@@ -20,7 +20,7 @@ $(function() {
 
 function stopload() {
     $('#body').css('display','block');
-    $('#loading').delay(500).fadeOut(500);
+    $('#loading').delay(420).fadeOut(420);
     $('#spinner').delay(300).fadeOut(300);
 }
 
